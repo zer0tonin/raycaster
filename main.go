@@ -58,9 +58,10 @@ func main() {
 
     for i := range width {
         for j := range height {
-            ray := castRay(i, j)
+            ray := castRay(i / width, j / height)
             for _, triangle := range solid.Triangles {
-                if ray.intersect(triangle) {
+                _, ok := ray.intersect(triangle)
+                if ok {
                     image.Set(i, j, blue)
                 } else {
                     image.Set(i, j, white)

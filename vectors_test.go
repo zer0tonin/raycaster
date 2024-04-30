@@ -1,15 +1,10 @@
 package main
 
 import (
-	"math"
 	"testing"
 
 	"github.com/hschendel/stl"
 )
-
-func floatEqual(x, y float32) bool {
-    return math.Nextafter32(x, y) == x
-}
 
 func TestSub(t *testing.T) {
     tests := []struct{
