@@ -21,14 +21,14 @@ func readSTL() *stl.Solid {
     solid.Rotate(stl.Vec3{0,0,0}, stl.Vec3{1,0,0}, stl.QuarterPi)
     solid.Rotate(stl.Vec3{0,0,0}, stl.Vec3{0,0,1}, stl.HalfPi)
     solid.MoveToPositive()
-    solid.Translate(stl.Vec3{0.10, 0.10, 0.10})
+    solid.Translate(stl.Vec3{-0.10, -0.10, 0.10})
 
     return solid
 }
 
 func main() {
-    width := 200
-    height := 200
+    width := 800
+    height := 800
 
     solid := readSTL()
     image := newImage(width, height)
@@ -40,7 +40,7 @@ func main() {
 
             go func(i, j int) {
                 defer wg.Done()
-                image.Set(i, height-j, color.White)
+                image.Set(i, height-j-1, color.White)
 
                 distance := float32(1)
                 intersects := false
@@ -59,7 +59,7 @@ func main() {
                 }
 
                 if intersects {
-                    image.Set(i, height-j, getBlue(distance))
+                    image.Set(i, height-j-1, getBlue(distance))
                 }
             }(i, j)
         }
