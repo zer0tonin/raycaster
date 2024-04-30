@@ -14,27 +14,27 @@ func floatEqual(x, y float32) bool {
 func TestSub(t *testing.T) {
     tests := []struct{
         name string
-        v1 *stl.Vec3
-        v2 *stl.Vec3
-        expected *stl.Vec3
+        v1 stl.Vec3
+        v2 stl.Vec3
+        expected stl.Vec3
     }{
         {
             name: "0 vectors",
-            v1: &stl.Vec3{0, 0, 0},
-            v2: &stl.Vec3{0, 0, 0},
-            expected: &stl.Vec3{0, 0, 0},
+            v1: stl.Vec3{0, 0, 0},
+            v2: stl.Vec3{0, 0, 0},
+            expected: stl.Vec3{0, 0, 0},
         },
         {
             name: "positive values",
-            v1: &stl.Vec3{3, 5, 0},
-            v2: &stl.Vec3{1, 2, 3},
-            expected: &stl.Vec3{2, 3, -3},
+            v1: stl.Vec3{3, 5, 0},
+            v2: stl.Vec3{1, 2, 3},
+            expected: stl.Vec3{2, 3, -3},
         },
         {
             name: "positive and negative values",
-            v1: &stl.Vec3{3, -5, 0},
-            v2: &stl.Vec3{1, 2, -3},
-            expected: &stl.Vec3{2, -7, 3},
+            v1: stl.Vec3{3, -5, 0},
+            v2: stl.Vec3{1, 2, -3},
+            expected: stl.Vec3{2, -7, 3},
         },
     }
 
@@ -52,26 +52,26 @@ func TestSub(t *testing.T) {
 func TestDot(t *testing.T) {
     tests := []struct{
         name string
-        v1 *stl.Vec3
-        v2 *stl.Vec3
+        v1 stl.Vec3
+        v2 stl.Vec3
         expected float32
     }{
         {
             name: "0 vectors",
-            v1: &stl.Vec3{0, 0, 0},
-            v2: &stl.Vec3{0, 0, 0},
+            v1: stl.Vec3{0, 0, 0},
+            v2: stl.Vec3{0, 0, 0},
             expected: 0,
         },
         {
             name: "parallel",
-            v1: &stl.Vec3{1, 1, 1},
-            v2: &stl.Vec3{2, 2, 2},
+            v1: stl.Vec3{1, 1, 1},
+            v2: stl.Vec3{2, 2, 2},
             expected: 6,
         },
         {
             name: "perpendicular",
-            v1: &stl.Vec3{0, 1, 1},
-            v2: &stl.Vec3{1, 0, 0},
+            v1: stl.Vec3{0, 1, 1},
+            v2: stl.Vec3{1, 0, 0},
             expected: 0,
         },
     }
@@ -88,27 +88,27 @@ func TestDot(t *testing.T) {
 func TestCross(t *testing.T) {
     tests := []struct{
         name string
-        v1 *stl.Vec3
-        v2 *stl.Vec3
-        expected *stl.Vec3
+        v1 stl.Vec3
+        v2 stl.Vec3
+        expected stl.Vec3
     }{
         {
             name: "0 vectors",
-            v1: &stl.Vec3{0, 0, 0},
-            v2: &stl.Vec3{0, 0, 0},
-            expected: &stl.Vec3{0, 0, 0},
+            v1: stl.Vec3{0, 0, 0},
+            v2: stl.Vec3{0, 0, 0},
+            expected: stl.Vec3{0, 0, 0},
         },
         {
             name: "parallel",
-            v1: &stl.Vec3{1, 1, 1},
-            v2: &stl.Vec3{2, 2, 2},
-            expected: &stl.Vec3{0, 0, 0},
+            v1: stl.Vec3{1, 1, 1},
+            v2: stl.Vec3{2, 2, 2},
+            expected: stl.Vec3{0, 0, 0},
         },
         {
             name: "perpendicular",
-            v1: &stl.Vec3{0, 1, 1},
-            v2: &stl.Vec3{1, 0, 0},
-            expected: &stl.Vec3{0, 1, -1},
+            v1: stl.Vec3{0, 1, 1},
+            v2: stl.Vec3{1, 0, 0},
+            expected: stl.Vec3{0, 1, -1},
         },
     }
 
