@@ -9,7 +9,7 @@ import (
 
 	"github.com/hschendel/stl"
 )
-    
+
 func readSTL() *stl.Solid {
     fileName := os.Args[1]
     solid, err := stl.ReadFile(fileName)
@@ -23,14 +23,6 @@ func readSTL() *stl.Solid {
 func newImage(width, height int) *image.RGBA {
     rect := image.Rect(0, 0, width, height)
     return image.NewRGBA(rect)
-}
-
-func castRay(i, j int) *stl.Vec3 {
-    return &stl.Vec3{}
-}
-
-func intersect(ray *stl.Vec3, triangle stl.Triangle) bool {
-    return false
 }
 
 func writePNG(image image.Image) {
@@ -68,7 +60,7 @@ func main() {
         for j := range height {
             ray := castRay(i, j)
             for _, triangle := range solid.Triangles {
-                if intersect(ray, triangle) {
+                if ray.intersect(triangle) {
                     image.Set(i, j, blue)
                 } else {
                     image.Set(i, j, white)
