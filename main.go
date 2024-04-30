@@ -3,7 +3,6 @@ package main
 import (
 	"image/color"
 	"log"
-	"math"
 	"os"
 
 	"github.com/hschendel/stl"
@@ -22,29 +21,34 @@ func readSTL() *stl.Solid {
 }
 
 func main() {
-    width := 800
-    height := 600
+    width := 200
+    height := 200
 
     solid := readSTL()
     image := newImage(width, height)
 
     for i := range width {
         for j := range height {
-            image.Set(i, j, color.White)
+            image.Set(i, height-j, color.White)
 
-            minT := float32(math.MaxFloat32)
-            ray := castRay(i / width, j / height)
+            distance := float32(1)
+            intersects := false
+            ray := castRay(
+                float32(i) / (float32(width) - 1),
+                float32(j) / (float32(height) - 1),
+            )
             for _, triangle := range solid.Triangles {
                 t, ok := ray.intersect(triangle)
                 if ok {
-                    if t < minT  {
-                        minT = t
+                    if t < distance  {
+                        distance = t
                     }
+                    intersects = true
                 }
             }
 
-            if minT < float32(math.MaxFloat32) {
-                image.Set(i, j, getBlue(minT))
+            if intersects {
+                image.Set(i, height-j, getBlue(distance))
             }
         }
     }

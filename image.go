@@ -33,4 +33,3 @@ func getBlue(distance float32) color.RGBA {
         A: 255,
     }
 }
-

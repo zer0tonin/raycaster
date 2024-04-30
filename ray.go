@@ -7,9 +7,9 @@ type ray struct {
     direction stl.Vec3
 }
 
-func castRay(i, j int) ray {
+func castRay(i, j float32) ray {
     return ray{
-        origin: stl.Vec3{float32(i), float32(j)},
+        origin: stl.Vec3{i, j},
         direction: stl.Vec3{0, 0, 1},
     }
 }
