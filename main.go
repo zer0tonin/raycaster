@@ -15,7 +15,12 @@ func readSTL() *stl.Solid {
         log.Panicf("Error while reading stl file: %v", err)
     }
 
-    //solid.ScaleLinearDowntoSizeBox(stl.Vec3{1, 1, 1})
+    solid.ScaleLinearDowntoSizeBox(stl.Vec3{0.50, 0.50, 0.50})
+    solid.Rotate(stl.Vec3{0,0,0}, stl.Vec3{0,1,0}, stl.HalfPi + stl.QuarterPi)
+    solid.Rotate(stl.Vec3{0,0,0}, stl.Vec3{1,0,0}, stl.QuarterPi)
+    solid.Rotate(stl.Vec3{0,0,0}, stl.Vec3{0,0,1}, stl.HalfPi)
+    solid.MoveToPositive()
+    solid.Translate(stl.Vec3{0.10, 0.10, 0.10})
 
     return solid
 }

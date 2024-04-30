@@ -9,7 +9,7 @@ type ray struct {
 
 func castRay(i, j float32) ray {
     return ray{
-        origin: stl.Vec3{i, j},
+        origin: stl.Vec3{i, j, 0},
         direction: stl.Vec3{0, 0, 1},
     }
 }

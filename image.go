@@ -27,9 +27,9 @@ func writePNG(image image.Image) {
 
 func getBlue(distance float32) color.RGBA {
     return color.RGBA{
-        R: 0,
-        G: 0,
-        B: uint8(distance * float32(255)),
+        R: uint8(float32(255) * (1 - distance)),
+        G: uint8(float32(255) * (1 - distance)),
+        B: uint8(255),
         A: 255,
     }
 }
